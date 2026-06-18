@@ -18,31 +18,42 @@ const base = {
 
 const lecturas = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/lecturas' }),
-  schema: z.object({
-    ...base,
-    autor: z.string().optional(),
-    tipo: z.enum(['lectura', 'receta', 'ensayo', 'referencia']).default('lectura'),
-    rating: z.number().min(1).max(5).optional(),
-    enlace: z.string().url().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      ...base,
+      autor: z.string().optional(),
+      tipo: z.enum(['Libro', 'Artículo', 'Paper']).default('Libro'),
+      rating: z.number().min(1).max(5).optional(),
+      enlace: z.string().url().optional(),
+      cover: image().optional(),
+    }),
 });
 
 const cuaderno = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/cuaderno' }),
   schema: z.object({
     ...base,
-    tipo: z.enum(['pregunta', 'observacion', 'cita', 'idea']).default('idea'),
+    tipo: z.enum(['Nota', 'Pregunta', 'Idea', 'Reflexión']).default('Reflexión'),
   }),
 });
 
 const recetario = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/recetario' }),
-  schema: z.object({
-    ...base,
-    autor: z.string().optional(),
-    tipo: z.enum(['lectura', 'receta', 'ensayo', 'referencia']).default('lectura'),
-    rating: z.number().min(1).max(5).optional(),
-    enlace: z.string().url().optional(),
+  schema: ({ image }) =>
+    z.object({
+      ...base,
+      autor: z.string().optional(),
+      tipo: z.enum([
+        'Desayuno',
+        'Comida-Principal',
+        'Acompañamiento',
+        'Snack',
+        'Postre',
+        'Panadería',
+      ]).default('Panadería'),
+      rating: z.number().min(1).max(5).optional(),
+      enlace: z.string().url().optional(),
+      cover: image().optional(),
   }),
 });
 

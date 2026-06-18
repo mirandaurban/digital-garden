@@ -3,10 +3,11 @@ title: "El manifiesto comunista"
 description: "Marx y Engels condensan en unas pocas páginas una teoría de la historia construida sobre el conflicto de clases."
 date: 2026-03-12
 autor: "Karl Marx y Friedrich Engels"
-tipo: ensayo
+tipo: Libro
 rating: 4
 tags: ["filosofía"]
 relacionados: ["cuaderno/pregunta-sobre-la-alienacion"]
+cover: ../images/books/manifiesto-comunista.jpeg
 ---
 
 El proletariado debe centrarse en elevar su conciencia de clase a través de la educación. Esa fue la idea que más se quedó conmigo, más que cualquier diagnóstico económico puntual.

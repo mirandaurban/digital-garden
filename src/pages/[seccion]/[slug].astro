@@ -25,14 +25,11 @@ const relacionados = await resolverRelacionados(data.relacionados ?? []);
 const detalles: { label: string; value: string }[] = [];
 const enlaces: { label: string; href: string }[] = [];
 
-if (seccion === 'lecturas') {
+if (seccion === 'biblioteca') {
   if (data.autor) detalles.push({ label: 'Autor', value: data.autor });
   detalles.push({ label: 'Tipo', value: data.tipo });
   if (data.rating) detalles.push({ label: 'Valoración', value: '★'.repeat(data.rating) + '☆'.repeat(5 - data.rating) });
   if (data.enlace) enlaces.push({ label: 'Fuente', href: data.enlace });
-}
-if (seccion === 'recetario') {
-  detalles.push({ label: 'Tipo', value: data.tipo });
 }
 if (seccion === 'cuaderno') {
   detalles.push({ label: 'Tipo', value: data.tipo });
@@ -56,6 +53,7 @@ if (seccion === 'proyectos') {
   detalles={detalles}
   enlaces={enlaces}
   relacionados={relacionados}
+  cover={data.cover}
 >
   <Content />
 </EntryLayout>

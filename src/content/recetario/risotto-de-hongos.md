@@ -2,9 +2,10 @@
 title: "Risotto de hongos"
 description: "La receta base que más repito: pocos ingredientes, mucha atención al caldo y al tiempo."
 date: 2026-04-02
-tipo: receta
-tags: ["cocina", "recetas"]
+tipo: Panadería
+tags: ["cocina"]
 relacionados: []
+cover: ../images/books/manifiesto-comunista.jpeg
 ---
 
 Ingredientes para 2 personas:

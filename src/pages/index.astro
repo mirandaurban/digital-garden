@@ -29,12 +29,6 @@ const piezasMosaico = todas.slice(0, 24).map((e) => ({
 }));
 
 const ultimas = todas.slice(0, 6);
-
-const notas = await getCollection('cuaderno');
-
-console.log(
-  notas.map(n => n.data.title)
-);
 ---
 <BaseLayout title={SITE_TITLE}>
   <section class="hero">

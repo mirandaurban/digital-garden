@@ -2,7 +2,7 @@
 title: "¿La alienación es siempre impuesta o también se puede elegir?"
 description: "Una pregunta que quedó abierta después de leer el Manifiesto Comunista."
 date: 2026-03-14
-tipo: pregunta
+tipo: Pregunta
 tags: ["filosofía"]
 relacionados: ["biblioteca/manifiesto-comunista"]
 ---

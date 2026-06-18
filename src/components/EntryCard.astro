@@ -1,5 +1,6 @@
 ---
 import { SECCIONES, formatFecha, type SeccionId } from '../lib/secciones';
+import { Image } from 'astro:assets';
 import Tag from './Tag.astro';
 
 interface Props {
@@ -10,12 +11,13 @@ interface Props {
   date: Date;
   tags?: string[];
   destacado?: boolean;
+  cover?: ImageMetadata;
 }
 
-const { seccionId, href, title, description, date, tags = [], destacado = false } = Astro.props;
+const { seccionId, href, title, description, date, tags = [], destacado = false, cover } = Astro.props;
 const s = SECCIONES[seccionId];
 ---
-<a href={href} class="card" class:list={[{ 'card--destacado': destacado }]} style={`--accent: var(--${s.accent}); --accent-soft: var(--${s.accent}-soft)`}>
+<a href={href} class="card" class:list={[{ 'card--destacado': destacado, 'card--con-cover': !!cover }]} style={`--accent: var(--${s.accent}); --accent-soft: var(--${s.accent}-soft)`}>
   <span class="card__bar" aria-hidden="true"></span>
   <div class="card__body">
     <div class="card__meta">
@@ -30,6 +32,7 @@ const s = SECCIONES[seccionId];
       </div>
     )}
   </div>
+  {cover && <Image src={cover} alt="" class="card__cover" />}
 </a>
 
 <style>
@@ -53,11 +56,22 @@ const s = SECCIONES[seccionId];
     background: var(--accent);
   }
   .card__body {
+    flex: 1;
     padding: var(--space-4) var(--space-6) var(--space-6);
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
     min-width: 0;
+  }
+  .card--con-cover .card__body {
+    min-height: 180px;
+  }
+  .card__cover {
+    width: 110px;
+    flex-shrink: 0;
+    align-self: stretch;
+    height: 100%;
+    object-fit: cover;
   }
   .card__meta {
     display: flex;
@@ -103,5 +117,25 @@ const s = SECCIONES[seccionId];
   }
   .card--destacado .card__bar {
     width: 10px;
+  }
+  .card--destacado .card__cover {
+    width: 160px;
+  }
+
+  @media (max-width: 420px) {
+    .card {
+      flex-direction: column;
+    }
+
+    .card__cover {
+      width: auto !important;
+      max-width: 250px; 
+      height: 240px;
+      margin: 0 auto;
+      border-radius: 12px;
+      object-fit: cover;
+      flex-shrink: 0;
+      margin-bottom: 14px;
+    }
   }
 </style>

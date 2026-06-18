@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import EntryCard from '../components/EntryCard.astro';
 import Tag from '../components/Tag.astro';
+import { Image } from 'astro:assets';
 import { SECCIONES, formatFecha, type SeccionId } from '../lib/secciones';
 
 interface Relacionado {
@@ -21,36 +22,39 @@ interface Props {
   detalles?: { label: string; value: string }[];
   enlaces?: { label: string; href: string }[];
   relacionados?: Relacionado[];
+  cover?: ImageMetadata;
 }
 
-const { seccionId, title, description, date, tags = [], detalles = [], enlaces = [], relacionados = [] } = Astro.props;
+const { seccionId, title, description, date, tags = [], detalles = [], enlaces = [], relacionados = [], cover } = Astro.props;
 const s = SECCIONES[seccionId];
 ---
+
 <BaseLayout title={title} description={description}>
   <article class="entry" style={`--accent: var(--${s.accent}); --accent-soft: var(--${s.accent}-soft)`}>
     <div class="wrap entry__header">
-      <a href={`/${s.id}`} class="entry__volver">{s.glifo} {s.label}</a>
-      <h1 class="entry__title">{title}</h1>
-      <p class="entry__desc">{description}</p>
-
-      <div class="entry__meta">
-        <span class="entry__fecha">{formatFecha(date)}</span>
-        {detalles.map((d) => <span class="entry__detalle"><b>{d.label}:</b> {d.value}</span>)}
+      <div class="entry__header-inner">
+        <a href={`/${s.id}`} class="entry__volver">{s.glifo} {s.label}</a>
+        <h1 class="entry__title">{title}</h1>
+        <p class="entry__desc">{description}</p>
+        <div class="entry__meta">
+          <span class="entry__fecha">{formatFecha(date)}</span>
+          {detalles.map((d) => <span class="entry__detalle"><b>{d.label}:</b> {d.value}</span>)}
+        </div>
+        {tags.length > 0 && (
+          <div class="entry__tags">
+            {tags.map((t) => <Tag tag={t} />)}
+          </div>
+        )}
+        {enlaces.length > 0 && (
+          <div class="entry__enlaces">
+            {enlaces.map((e) => (
+              <a href={e.href} class="entry__enlace" target="_blank" rel="noopener noreferrer">{e.label} ↗</a>
+            ))}
+          </div>
+        )}
       </div>
 
-      {tags.length > 0 && (
-        <div class="entry__tags">
-          {tags.map((t) => <Tag tag={t} />)}
-        </div>
-      )}
-
-      {enlaces.length > 0 && (
-        <div class="entry__enlaces">
-          {enlaces.map((e) => (
-            <a href={e.href} class="entry__enlace" target="_blank" rel="noopener noreferrer">{e.label} ↗</a>
-          ))}
-        </div>
-      )}
+      {cover && <Image src={cover} alt="" class="entry__cover" />}
     </div>
 
     <div class="wrap entry__contenido">
@@ -83,6 +87,26 @@ const s = SECCIONES[seccionId];
     border-bottom: 1px solid var(--border);
     max-width: 760px;
   }
+
+  .entry__header-inner {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .entry__header {
+    display: flex;
+    gap: var(--space-8);
+    align-items: flex-start;
+  }
+
+  .entry__cover {
+    width: 240px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+  }
+
   .entry__volver {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
@@ -90,15 +114,18 @@ const s = SECCIONES[seccionId];
     letter-spacing: 0.06em;
     color: var(--accent);
   }
+
   .entry__title {
     font-size: var(--text-3xl);
     margin-top: var(--space-3);
   }
+
   .entry__desc {
     color: var(--text-muted);
     font-size: var(--text-lg);
     margin-top: var(--space-3);
   }
+
   .entry__meta {
     display: flex;
     gap: var(--space-4);
@@ -108,50 +135,61 @@ const s = SECCIONES[seccionId];
     font-size: var(--text-xs);
     color: var(--text-muted);
   }
+
   .entry__detalle b { color: var(--text); font-weight: 500; }
+
   .entry__tags {
     display: flex;
     gap: var(--space-2);
     flex-wrap: wrap;
     margin-top: var(--space-4);
   }
+
   .entry__enlaces {
     display: flex;
     gap: var(--space-4);
     flex-wrap: wrap;
     margin-top: var(--space-4);
   }
+
   .entry__enlace {
     font-family: var(--font-mono);
     font-size: var(--text-sm);
     color: var(--accent);
     text-decoration: underline;
   }
+
   .entry__contenido {
     max-width: 760px;
     padding-top: var(--space-8);
     padding-bottom: var(--space-12);
     font-size: var(--text-base);
   }
+
   .entry__contenido :global(h2) {
     font-size: var(--text-xl);
     margin-top: var(--space-8);
     margin-bottom: var(--space-3);
   }
+
   .entry__contenido :global(h3) {
     font-size: var(--text-lg);
     margin-top: var(--space-6);
     margin-bottom: var(--space-2);
   }
+
   .entry__contenido :global(p) {
     margin: 0 0 var(--space-4);
   }
+
   .entry__contenido :global(ul),
   .entry__contenido :global(ol) {
     margin: 0 0 var(--space-4);
     padding-left: 1.3em;
   }
+
   .entry__contenido :global(li) { margin-bottom: var(--space-1); }
+
   .entry__contenido :global(blockquote) {
     margin: var(--space-4) 0;
     padding: var(--space-1) var(--space-4);
@@ -159,6 +197,7 @@ const s = SECCIONES[seccionId];
     color: var(--text-muted);
     font-style: italic;
   }
+
   .entry__contenido :global(code) {
     font-family: var(--font-mono);
     font-size: 0.9em;
@@ -166,21 +205,25 @@ const s = SECCIONES[seccionId];
     padding: 0.15em 0.4em;
     border-radius: 4px;
   }
+
   .entry__contenido :global(pre) {
     background: var(--bg-sunken);
     padding: var(--space-4);
     border-radius: var(--radius-sm);
     overflow-x: auto;
   }
+
   .entry__contenido :global(pre code) {
     background: none;
     padding: 0;
   }
+
   .entry__contenido :global(a) {
     color: var(--accent);
     text-decoration: underline;
     text-decoration-color: var(--accent-soft);
   }
+
   .entry__contenido :global(img) {
     border-radius: var(--radius-sm);
     margin: var(--space-4) 0;
@@ -189,13 +232,28 @@ const s = SECCIONES[seccionId];
   .entry__relacionados {
     padding-bottom: var(--space-16);
   }
+
   .entry__relacionados-titulo {
     font-size: var(--text-lg);
     margin-bottom: var(--space-4);
   }
+
   .entry__relacionados-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: var(--space-4);
+  }
+
+  @media (max-width: 640px) {
+    .entry__header {
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .entry__cover {
+      width: 60%;
+      max-width: 320px;
+      margin: 0 auto;
+    }
   }
 </style>

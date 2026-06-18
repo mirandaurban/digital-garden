@@ -37,6 +37,7 @@ const entradas = (await getCollection(seccion, ({ data }) => !data.draft)).sort(
             description={e.data.description}
             date={e.data.date}
             tags={e.data.tags}
+            cover={e.data.cover}
           />
         ))}
       </div>

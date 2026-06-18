@@ -2,7 +2,7 @@
 title: "El subjuntivo no es un modo, es una actitud"
 description: "Una observación mientras repasaba gramática que terminó siendo más útil que la regla original."
 date: 2026-03-14
-tipo: pregunta
+tipo: Reflexión
 tags: ["filosofía"]
 relacionados: []
 ---
