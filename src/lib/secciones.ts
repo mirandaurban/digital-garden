@@ -16,7 +16,7 @@ export const SECCIONES: Record<SeccionId, Seccion> = {
     singular: 'lectura',
     descripcion: 'Contenido sobre libros: reseñas, opiniones, y reflexiones.',
     accent: 'c-lecturas',
-    glifo: '◆',
+    glifo: 'ꕤ',
   },
   cuaderno: {
     id: 'cuaderno',
@@ -24,7 +24,7 @@ export const SECCIONES: Record<SeccionId, Seccion> = {
     singular: 'nota',
     descripcion: 'Pensamientos rápidos: preguntas, observaciones, citas, ideas. No necesita estar terminado.',
     accent: 'c-cuaderno',
-    glifo: '●',
+    glifo: '✤',
   },
   recetario: {
     id: 'recetario',
@@ -32,7 +32,7 @@ export const SECCIONES: Record<SeccionId, Seccion> = {
     singular: 'recetario',
     descripcion: 'Recetas deliciosas que disfruto hacer.',
     accent: 'c-recetario',
-    glifo: '◆',
+    glifo: '❋',
   },
   laboratorio: {
     id: 'laboratorio',
@@ -40,7 +40,7 @@ export const SECCIONES: Record<SeccionId, Seccion> = {
     singular: 'experimento',
     descripcion: 'Un lugar para jugar: simulaciones, matemáticas, machine learning, y más.',
     accent: 'c-laboratorio',
-    glifo: '▲',
+    glifo: '✼',
   },
   proyectos: {
     id: 'proyectos',
@@ -48,7 +48,7 @@ export const SECCIONES: Record<SeccionId, Seccion> = {
     singular: 'proyecto',
     descripcion: 'Procesos de largo plazo: entrenamiento, aprendizaje, desarrollo de este mismo jardín.',
     accent: 'c-proyectos',
-    glifo: '■',
+    glifo: '❉',
   },
 };
 
