@@ -1,0 +1,221 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+const lastUpdated = new Date('2026-06-17T12:00:00').toLocaleDateString('es-MX', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+---
+<BaseLayout
+  title="Términos y condiciones"
+  description="Aviso legal, uso del contenido y alcance de las opiniones publicadas en este sitio web."
+>
+  <section class="hero">
+    <div class="hero__content">
+      <div class="hero__intro">
+        <h1 class="hero__title">Aviso legal</h1>
+        <p class="last-updated">Última actualización: {lastUpdated}</p>
+      </div>
+
+      <div class="hero__text">
+        <div class="term-content">
+
+          <h2>1. Naturaleza del contenido</h2>
+          <p>
+            Todo lo publicado en este sitio web — reseñas, notas, reflexiones y cualquier otro contenido —
+            representa exclusivamente mi opinión personal. No soy crítica literaria
+            profesional, académica ni portavoz de ninguna institución.
+          </p>
+          <p>
+            Mis opiniones son el resultado de mi experiencia, en un momento
+            dado, desde mi perspectiva. Dos personas pueden consumir el mismo libro, texto, o contenido y llegar a
+            conclusiones completamente distintas, y eso está bien.
+          </p>
+
+          <h2>2. Sin intención de daño</h2>
+          <p>
+            Nada de lo publicado aquí tiene la intención de perjudicar, atacar o denigrar
+            a ninguna persona involucrada en la creación de los contenidos en los que me baso.
+          </p>
+          <p>
+            Cuando una reseña o artículo es crítico, lo es desde el respeto. Escribo sobre el contenido,
+            no sobre las personas detrás de ellos. Si en algún momento algo de lo publicado
+            te genera una preocupación legítima, puedes contactarme directamente.
+          </p>
+
+          <h2>3. Propiedad intelectual y licencia</h2>
+          <p>
+            Todo el contenido original de este sitio web — textos, estructura editorial y forma
+            de expresión — está protegido bajo la licencia
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener noreferrer">
+              Creative Commons BY-NC-ND 4.0
+            </a>.
+          </p>
+
+          <div class="license-grid">
+            <div class="license-item">
+              <span class="license-icon">BY</span>
+              <div>
+                <p class="license-title">Atribución</p>
+                <p class="license-desc">Si compartes algo de este sitio web, debes darme crédito como autora de forma visible y clara.</p>
+              </div>
+            </div>
+            <div class="license-item">
+              <span class="license-icon">NC</span>
+              <div>
+                <p class="license-title">No comercial</p>
+                <p class="license-desc">No puedes usar mi contenido para fines comerciales: venderlo, incluirlo en productos de pago, usarlo en publicidad o monetizarlo de ninguna forma.</p>
+              </div>
+            </div>
+            <div class="license-item">
+              <span class="license-icon">ND</span>
+              <div>
+                <p class="license-title">Sin derivadas</p>
+                <p class="license-desc">No puedes modificar, transformar ni adaptar mis textos para crear contenido derivado. Mis palabras son mías tal como las escribí.</p>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            Esto aplica a todos los contenidos del sitio web. Las portadas de libros que aparecen
+            son propiedad de sus respectivas editoriales y se usan únicamente con fines
+            ilustrativos en el contexto de una reseña.
+          </p>
+
+          <h2>4. Lo que sí puedes hacer</h2>
+          <p>Puedes leer, guardar para uso personal, recomendar el sitio web a otras personas y compartir el enlace a cualquier entrada con atribución. Me alegra que el contenido te sea útil.</p>
+
+          <h2>5. Lo que no puedes hacer</h2>
+          <p>Queda prohibido reproducir total o parcialmente mis textos sin permiso escrito, publicarlos en otros medios como si fueran propios, entrenar modelos de inteligencia artificial con este contenido, o usarlo con cualquier fin comercial.</p>
+
+          <h2>6. Sin garantías</h2>
+          <p>
+            Las opiniones aquí expresadas no constituyen asesoramiento de ningún tipo.
+            No me responsabilizo de las decisiones que alguien pueda tomar basándose
+            en mis reseñas.
+          </p>
+
+          <h2>7. Cambios a estos términos</h2>
+          <p>
+            Puedo actualizar esta página cuando lo considere necesario. La fecha de
+            última actualización siempre estará visible al inicio de esta sección.
+          </p>
+
+          <div class="closing">
+            <p>
+              Si tienes dudas o quieres hablar sobre algún contenido específico,
+              puedes escribirme. Este sitio web existe porque me gusta compartir mis conocimientos 
+              y quiero que ese espacio se mantenga honesto y respetuoso para todos.
+            </p>
+            <p class="closing-sig">— Miranda Urban Solano</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: var(--space-16) 0 var(--space-8);
+  }
+
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .hero__intro {
+    text-align: center;
+  }
+
+  .last-updated {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    margin-top: 0.5rem;
+  }
+
+  .hero__title {
+    font-size: var(--text-4xl);
+    margin-top: var(--space-4);
+    line-height: 1.1;
+  }
+
+  .term-content h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: var(--text-2xl);
+  }
+
+  .term-content p {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+  }
+
+  .license-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .license-item {
+    background: var(--bg-secondary);
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .license-icon {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .license-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .closing {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .closing-sig {
+    margin-top: 1.5rem;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 640px) {
+    .hero__content {
+      padding: 0 1rem;
+      gap: 2rem;
+    }
+
+    .term-content h2 {
+      font-size: var(--text-xl);
+    }
+
+    .term-content p {
+      font-size: var(--text-base);
+      line-height: 1.85;
+    }
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+import { getCollection, render } from 'astro:content';
+import EntryLayout from '../../layouts/EntryLayout.astro';
+import { resolverRelacionados } from '../../lib/contenido';
+import { SECCION_IDS, type SeccionId } from '../../lib/secciones';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const seccion of SECCION_IDS) {
+    const entradas = await getCollection(seccion, ({ data }) => !data.draft);
+    for (const entry of entradas) {
+      paths.push({ params: { seccion, slug: entry.id }, props: { seccion, entry } });
+    }
+  }
+  return paths;
+}
+
+const { seccion, entry } = Astro.props as { seccion: SeccionId; entry: any };
+const { Content } = await render(entry);
+const { data } = entry;
+
+const relacionados = await resolverRelacionados(data.relacionados ?? []);
+
+// Detalles específicos por tipo de colección, sin acoplar el layout a cada schema.
+const detalles: { label: string; value: string }[] = [];
+const enlaces: { label: string; href: string }[] = [];
+
+if (seccion === 'lecturas') {
+  if (data.autor) detalles.push({ label: 'Autor', value: data.autor });
+  detalles.push({ label: 'Tipo', value: data.tipo });
+  if (data.rating) detalles.push({ label: 'Valoración', value: '★'.repeat(data.rating) + '☆'.repeat(5 - data.rating) });
+  if (data.enlace) enlaces.push({ label: 'Fuente', href: data.enlace });
+}
+if (seccion === 'recetario') {
+  detalles.push({ label: 'Tipo', value: data.tipo });
+}
+if (seccion === 'cuaderno') {
+  detalles.push({ label: 'Tipo', value: data.tipo });
+}
+if (seccion === 'laboratorio') {
+  if (data.stack?.length) detalles.push({ label: 'Stack', value: data.stack.join(', ') });
+  if (data.demoUrl) enlaces.push({ label: 'Ver demo', href: data.demoUrl });
+  if (data.repoUrl) enlaces.push({ label: 'Código', href: data.repoUrl });
+}
+if (seccion === 'proyectos') {
+  detalles.push({ label: 'Estado', value: data.estado });
+  if (data.inicio) detalles.push({ label: 'Inicio', value: new Intl.DateTimeFormat('es', { month: 'long', year: 'numeric' }).format(data.inicio) });
+}
+---
+<EntryLayout
+  seccionId={seccion}
+  title={data.title}
+  description={data.description}
+  date={data.date}
+  tags={data.tags}
+  detalles={detalles}
+  enlaces={enlaces}
+  relacionados={relacionados}
+>
+  <Content />
+</EntryLayout>

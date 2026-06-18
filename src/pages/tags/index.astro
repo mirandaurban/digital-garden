@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { obtenerTodasLasEntradas, slugifyTag } from '../../lib/contenido';
+
+const entradas = await obtenerTodasLasEntradas();
+const conteo = new Map<string, { label: string; n: number }>();
+
+for (const e of entradas) {
+  for (const tag of e.data.tags) {
+    const slug = slugifyTag(tag);
+    const actual = conteo.get(slug);
+    if (actual) actual.n += 1;
+    else conteo.set(slug, { label: tag, n: 1 });
+  }
+}
+
+const tags = Array.from(conteo.entries())
+  .map(([slug, info]) => ({ slug, ...info }))
+  .sort((a, b) => b.n - a.n);
+
+const maxN = Math.max(1, ...tags.map((t) => t.n));
+function escala(n: number) {
+  const ratio = n / maxN;
+  return (0.85 + ratio * 0.9).toFixed(2);
+}
+---
+<BaseLayout title="Conexiones" description="Todas las ideas que conectan piezas del jardín.">
+  <section class="wrap encabezado">
+    <p class="eyebrow">Todo puede conectarse</p>
+    <h1 class="encabezado__titulo">Conexiones</h1>
+    <p class="encabezado__sub">No hay categorías rígidas, solo ideas que aparecen en más de un lugar.</p>
+  </section>
+
+  <section class="wrap nube">
+    {tags.length === 0 ? (
+      <p class="nube__vacio">Todavía no hay etiquetas. Aparecerán aquí en cuanto agregues contenido.</p>
+    ) : (
+      tags.map((t) => (
+        <a href={`/tags/${t.slug}`} class="nube__tag" style={`font-size: ${escala(t.n)}rem`}>
+          #{t.label}
+        </a>
+      ))
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .encabezado {
+    padding: var(--space-16) var(--space-6) var(--space-8);
+  }
+  .encabezado__titulo {
+    font-size: var(--text-3xl);
+    margin-top: var(--space-2);
+  }
+  .encabezado__sub {
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+  }
+  .nube {
+    padding-bottom: var(--space-24);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-4);
+    align-items: baseline;
+  }
+  .nube__tag {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    transition: color var(--transition);
+  }
+  .nube__tag:hover {
+    color: var(--text);
+  }
+  .nube__vacio {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+</style>

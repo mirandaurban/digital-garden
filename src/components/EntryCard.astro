@@ -1,0 +1,107 @@
+---
+import { SECCIONES, formatFecha, type SeccionId } from '../lib/secciones';
+import Tag from './Tag.astro';
+
+interface Props {
+  seccionId: SeccionId;
+  href: string;
+  title: string;
+  description: string;
+  date: Date;
+  tags?: string[];
+  destacado?: boolean;
+}
+
+const { seccionId, href, title, description, date, tags = [], destacado = false } = Astro.props;
+const s = SECCIONES[seccionId];
+---
+<a href={href} class="card" class:list={[{ 'card--destacado': destacado }]} style={`--accent: var(--${s.accent}); --accent-soft: var(--${s.accent}-soft)`}>
+  <span class="card__bar" aria-hidden="true"></span>
+  <div class="card__body">
+    <div class="card__meta">
+      <span class="card__seccion">{s.glifo} {s.label}</span>
+      <span class="card__fecha">{formatFecha(date)}</span>
+    </div>
+    <h3 class="card__title">{title}</h3>
+    <p class="card__desc">{description}</p>
+    {tags.length > 0 && (
+      <div class="card__tags">
+        {tags.slice(0, 3).map((t) => <Tag tag={t} as="span" />)}
+      </div>
+    )}
+  </div>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    height: 100%;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px -8px var(--shadow);
+    border-color: var(--accent);
+  }
+  .card__bar {
+    width: 6px;
+    flex-shrink: 0;
+    background: var(--accent);
+  }
+  .card__body {
+    padding: var(--space-4) var(--space-6) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+  .card__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-2);
+  }
+  .card__seccion {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .card__fecha {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .card__title {
+    font-size: var(--text-lg);
+  }
+  .card__desc {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card__tags {
+    display: flex;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+    margin-top: var(--space-1);
+  }
+
+  .card--destacado .card__title {
+    font-size: var(--text-xl);
+  }
+  .card--destacado .card__bar {
+    width: 10px;
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntryCard from '../../components/EntryCard.astro';
+import { SECCION_IDS, SECCIONES, type SeccionId } from '../../lib/secciones';
+
+export function getStaticPaths() {
+  return SECCION_IDS.map((id) => ({ params: { seccion: id } }));
+}
+
+const { seccion } = Astro.params as { seccion: SeccionId };
+const s = SECCIONES[seccion];
+
+const entradas = (await getCollection(seccion, ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+<BaseLayout title={s.label} description={s.descripcion}>
+  <section class="hero" style={`--accent: var(--${s.accent}); --accent-soft: var(--${s.accent}-soft)`}>
+    <div class="wrap">
+      <span class="hero__glifo" aria-hidden="true">{s.glifo}</span>
+      <h1 class="hero__title">{s.label}</h1>
+      <p class="hero__desc">{s.descripcion}</p>
+    </div>
+  </section>
+
+  <section class="wrap listado">
+    {entradas.length === 0 ? (
+      <p class="listado__vacio">Todavía no hay nada aquí. Esta sección está esperando su primera pieza.</p>
+    ) : (
+      <div class="listado__grid">
+        {entradas.map((e) => (
+          <EntryCard
+            seccionId={seccion}
+            href={`/${seccion}/${e.id}`}
+            title={e.data.title}
+            description={e.data.description}
+            date={e.data.date}
+            tags={e.data.tags}
+          />
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: var(--accent-soft);
+    border-bottom: 1px solid var(--border);
+    padding: var(--space-16) 0 var(--space-12);
+  }
+  .hero__glifo {
+    font-size: 1.75rem;
+    color: var(--accent);
+  }
+  .hero__title {
+    font-size: var(--text-3xl);
+    margin-top: var(--space-2);
+  }
+  .hero__desc {
+    color: var(--text-muted);
+    font-size: var(--text-lg);
+    margin-top: var(--space-3);
+    max-width: 56ch;
+  }
+  .listado {
+    padding: var(--space-12) var(--space-6) var(--space-24);
+  }
+  .listado__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+  .listado__vacio {
+    color: var(--text-muted);
+    font-style: italic;
+  }
+</style>

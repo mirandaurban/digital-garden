@@ -1,0 +1,70 @@
+---
+// Botón para alternar claro/oscuro
+---
+<button id="theme-toggle" class="theme-toggle" aria-label="Cambiar entre modo claro y oscuro" type="button">
+  <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
+  <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
+</button>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    color: var(--text);
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .theme-toggle:hover {
+    border-color: var(--text-muted);
+  }
+  .theme-toggle__icon {
+    position: absolute;
+    font-size: 1.05rem;
+    transition: opacity var(--transition), transform var(--transition);
+  }
+  .theme-toggle__icon--moon { opacity: 1; }
+  .theme-toggle__icon--sun { opacity: 0; transform: rotate(-90deg); }
+  :root[data-theme='light'] .theme-toggle__icon--moon,
+  body:not([data-theme]) .theme-toggle__icon--moon { opacity: 1; }
+
+  :root[data-theme='dark'] .theme-toggle__icon--sun {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  :root[data-theme='dark'] .theme-toggle__icon--moon {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+</style>
+
+<script>
+  const KEY = 'jardin-theme';
+  const root = document.documentElement;
+  const btn = document.getElementById('theme-toggle');
+
+  function aplicar(tema: string) {
+    if (tema === 'light' || tema === 'dark') {
+      root.setAttribute('data-theme', tema);
+    } else {
+      root.removeAttribute('data-theme');
+    }
+  }
+
+  const guardado = localStorage.getItem(KEY);
+  if (guardado) aplicar(guardado);
+
+  btn?.addEventListener('click', () => {
+    const prefiereOscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const actual = root.getAttribute('data-theme') || (prefiereOscuro ? 'dark' : 'light');
+    const siguiente = actual === 'dark' ? 'light' : 'dark';
+    aplicar(siguiente);
+    localStorage.setItem(KEY, siguiente);
+  });
+</script>

@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../site.config';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = SITE_DESCRIPTION } = Astro.props;
+const fullTitle = title === SITE_TITLE ? SITE_TITLE : `${title} · ${SITE_TITLE}`;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <title>{fullTitle}</title>
+    <script is:inline>
+      try {
+        const tema = localStorage.getItem('jardin-theme');
+        if (tema) document.documentElement.setAttribute('data-theme', tema);
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <p>Hecho con café y mucho amor · {new Date().getFullYear()}</p>
+
+        <div class="footer-links">
+        <a href="/terminos" class="footer-cc">Términos y condiciones</a>
+        <a
+          class="footer-cc"
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es"
+          target="_blank"
+          rel="license noopener noreferrer">
+          CC BY-NC-SA 4.0
+        </a>
+      </div>
+
+        <p class="footer__sub"><a href="/tags">Ver todas las conexiones →</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: var(--space-24);
+  }
+  .footer__inner {
+    padding: var(--space-8) var(--space-6);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+  .footer p { margin: 0; }
+  .footer__sub a { text-decoration: underline; }
+</style>
