@@ -1,0 +1,33 @@
+---
+import { slugifyTag } from '../lib/contenido';
+
+interface Props {
+  tag: string;
+  as?: 'a' | 'span';
+}
+const { tag, as = 'a' } = Astro.props;
+const slug = slugifyTag(tag);
+---
+{as === 'a' ? (
+  <a href={`/tags/${slug}`} class="tag">{tag}</a>
+) : (
+  <span class="tag">{tag}</span>
+)}
+
+<style>
+  .tag {
+    display: inline-flex;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    border-radius: 999px;
+    background: var(--bg-sunken);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+  }
+  a.tag:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+  }
+</style>

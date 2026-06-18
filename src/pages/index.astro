@@ -1,0 +1,121 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Mosaico from '../components/Mosaico.astro';
+import SectionCard from '../components/SectionCard.astro';
+import EntryCard from '../components/EntryCard.astro';
+import { SECCION_IDS, type SeccionId } from '../lib/secciones';
+import { SITE_TITLE } from '../site.config';
+
+const porSeccion = await Promise.all(
+  SECCION_IDS.map(async (id) => ({
+    id,
+    entradas: (await getCollection(id, ({ data }) => !data.draft)).map((e) => ({ ...e, seccionId: id as SeccionId })),
+  }))
+);
+
+const todas = porSeccion
+  .flatMap((s) => s.entradas)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const conteos: Record<SeccionId, number> = Object.fromEntries(
+  porSeccion.map((s) => [s.id, s.entradas.length])
+) as Record<SeccionId, number>;
+
+const piezasMosaico = todas.slice(0, 24).map((e) => ({
+  seccionId: e.seccionId,
+  title: e.data.title,
+  href: `/${e.seccionId}/${e.id}`,
+}));
+
+const ultimas = todas.slice(0, 6);
+---
+<BaseLayout title={SITE_TITLE}>
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <p class="eyebrow">Miranda Urban Solano</p>
+      <h1 class="hero__title">Un lugar para guardar, conectar y explorar<br />los temas que más me interesan.</h1>
+      <p class="hero__sub">
+        Te presento a mi jardín digital, un reflejo de lo que hay en mi mente. Aquí busco depositar mis reflexiones sobre libros, 
+        notas, recetas, experimentos y proyectos de largo plazo. La idea es que vaya creciendo conforme yo también lo hago.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap mosaico-sec">
+    <p class="eyebrow mosaico-sec__eyebrow">El jardín hasta ahora</p>
+    <Mosaico piezas={piezasMosaico} />
+  </section>
+
+  <section class="wrap secciones">
+    <div class="secciones__grid">
+      {SECCION_IDS.map((id) => (
+        <SectionCard seccionId={id} total={conteos[id]} />
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap ultimas">
+    <h2 class="ultimas__titulo">Últimas piezas</h2>
+    <div class="ultimas__grid">
+      {ultimas.map((e) => (
+        <EntryCard
+          seccionId={e.seccionId}
+          href={`/${e.seccionId}/${e.id}`}
+          title={e.data.title}
+          description={e.data.description}
+          date={e.data.date}
+          tags={e.data.tags}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: var(--space-16) 0 var(--space-8);
+  }
+  .hero__inner {
+    max-width: 760px;
+  }
+  .hero__title {
+    font-size: var(--text-4xl);
+    margin-top: var(--space-4);
+  }
+  .hero__sub {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+    margin-top: var(--space-6);
+    max-width: 65ch;
+  }
+
+  .mosaico-sec {
+    padding-bottom: var(--space-16);
+  }
+  .mosaico-sec__eyebrow {
+    margin-bottom: var(--space-4);
+  }
+
+  .secciones {
+    padding-bottom: var(--space-16);
+  }
+  .secciones__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .ultimas {
+    padding-bottom: var(--space-24);
+  }
+  .ultimas__titulo {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-6);
+  }
+  .ultimas__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+</style>

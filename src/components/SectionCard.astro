@@ -1,0 +1,59 @@
+---
+import { SECCIONES, type SeccionId } from '../lib/secciones';
+
+interface Props {
+  seccionId: SeccionId;
+  total: number;
+}
+const { seccionId, total } = Astro.props;
+const s = SECCIONES[seccionId];
+---
+<a href={`/${s.id}`} class="sec" style={`--accent: var(--${s.accent}); --accent-soft: var(--${s.accent}-soft)`}>
+  <span class="sec__glifo" aria-hidden="true">{s.glifo}</span>
+  <h2 class="sec__title">{s.label}</h2>
+  <p class="sec__desc">{s.descripcion}</p>
+  <span class="sec__count">{total} {total === 1 ? s.singular : s.singular + 's'}</span>
+</a>
+
+<style>
+  .sec {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    min-height: 220px;
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .sec:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -10px var(--shadow-strong);
+  }
+  .sec__glifo {
+    font-size: 1.75rem;
+    color: var(--accent);
+  }
+  .sec__title {
+    font-size: var(--text-2xl);
+    color: var(--text);
+  }
+  .sec__desc {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+    max-width: 32ch;
+  }
+  .sec__count {
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+</style>

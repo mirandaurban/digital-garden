@@ -1,0 +1,146 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import sobreMiImg from '../content/images/sobre-mi/sobre-mi-img.jpeg';
+---
+<BaseLayout
+  title="Sobre mí"
+  description="Pequeña introducción sobre mí, mi visión, y objetivo."
+>
+  <section class="hero">
+    <div class="hero__content">
+      <div class="hero__intro">
+        <p class="eyebrow">¿Quién soy?</p>
+        <h1 class="hero__title">¡Hola, soy Mir!</h1>
+      </div>
+
+      <div class="hero__right">
+        <img src={sobreMiImg.src} alt="Sobre mí" />
+      </div>
+
+      <div class="hero__text">
+        <p class="hero__sub">
+          Soy estudiante de ingeniería en tecnologías computacionales y
+          vivo con esta necesidad constante de aprender y experimentar cosas nuevas. <br>
+          <br> Soy una persona muy activa, amo tener muchos hobbies: corro, cocino, practico yoga, leo, nado y siempre
+          encuentro espacio para más actividades. Creo que la razón por la que soy así es por la sensación de desafío,
+          lo disfruto mucho. Como yo lo veo, cada reto representa una oportunidad de avanzar, adquirir experiencia y
+          crecer, y pocas cosas me motivan tanto como esa sensación de progreso. <br>
+          <br> Actualmente, gran parte de mi energía está enfocada en aprender, en el sentido más amplio de la palabra.
+          Tengo el hábito de leer todos los días y procuro descubrir algo nuevo con frecuencia o, al menos, encontrar
+          formas de aplicar lo que ya sé. Lo hago como un desafío personal, para explorar hasta dónde puedo llegar,
+          pero también porque disfruto sus resultados: al ampliar mi perspectiva, se transforma la manera en que
+          entiendo el mundo. <br>
+         
+          <br> Este espacio es un reflejo de todo eso. Un lugar donde puedo organizar, conservar y compartir las ideas,
+          aprendizajes y preguntas que voy acumulando en el camino. Un jardín digital al que puedo volver para sembrar
+          nuevo conocimiento o recuperar aquello que alguna vez me ayudó a crecer. <br>
+        </p>
+
+        <div class="social-links">
+          <a href="https://www.tiktok.com/@mirandaurbann" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+            </svg>
+            TikTok
+          </a>
+          <a href="https://letterboxd.com/mirurban" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+              <path d="M10.5 2C6.08 2 2.5 5.58 2.5 10s3.58 8 8 8c1.5 0 2.91-.42 4.11-1.14L19.5 21.5l1.41-1.41-4.97-4.97A7.96 7.96 0 0 0 18.5 10c0-4.42-3.58-8-8-8zm0 2a6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6 6 6 0 0 1 6-6z"/>
+            </svg>
+            Letterboxd
+          </a>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: var(--space-16) 0 var(--space-8);
+  }
+
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero__intro {
+    text-align: center;
+  }
+
+  .hero__right {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero__right img {
+    width: 100%;
+    max-width: 620px;
+    max-height: 620px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .hero__title {
+    font-size: var(--text-4xl);
+    margin-top: var(--space-4);
+    line-height: 1.1;
+  }
+
+  .hero__sub {
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.25rem;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .social-btn:hover {
+    background: var(--text-muted);
+    color: var(--bg);
+  }
+
+  @media (max-width: 640px) {
+    .hero__content {
+      padding: 0 1rem;
+      gap: 2.5rem;
+    }
+
+    .hero__right img {
+      max-height: 420px;
+    }
+
+    .hero__sub {
+      font-size: var(--text-base);
+      line-height: 1.85;
+    }
+  }
+</style>

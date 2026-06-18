@@ -1,0 +1,97 @@
+---
+import { SECCION_IDS, SECCIONES } from '../lib/secciones';
+import { SITE_TITLE } from '../site.config';
+import ThemeToggle from './ThemeToggle.astro';
+
+const ruta = Astro.url.pathname;
+function activo(id: string) {
+  return ruta.startsWith(`/${id}`);
+}
+---
+<header class="header">
+  <div class="wrap header__inner">
+    <a href="/" class="header__brand">
+      <span class="header__brand-mark">⟡</span>
+      <span>{SITE_TITLE}</span>
+    </a>
+
+    <nav class="header__nav" aria-label="Secciones">
+      {SECCION_IDS.map((id) => {
+        const s = SECCIONES[id];
+        return (
+          <a
+            href={`/${id}`}
+            class="header__link"
+            class:list={[{ 'header__link--activo': activo(id) }]}
+            style={`--accent: var(--${s.accent})`}
+          >
+            {s.label}
+          </a>
+        );
+      })}
+
+      <a href="/sobre-mi" class="header__link">
+        Sobre mí
+      </a>
+    </nav>
+
+    <ThemeToggle />
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(6px);
+  }
+  .header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+  .header__brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-right: auto;
+    white-space: nowrap;
+  }
+  .header__brand-mark {
+    color: var(--c-laboratorio);
+  }
+  .header__nav {
+    display: flex;
+    gap: var(--space-2);
+  }
+  .header__link {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    transition: background var(--transition), color var(--transition);
+  }
+  .header__link:hover {
+    background: var(--bg-sunken);
+    color: var(--text);
+  }
+  .header__link--activo {
+    color: var(--accent);
+    background: var(--bg-sunken);
+  }
+
+  @media (max-width: 720px) {
+    .header__inner { flex-wrap: wrap; gap: var(--space-3); }
+    .header__nav { order: 3; width: 100%; overflow-x: auto; gap: var(--space-1); }
+    .header__link { padding: var(--space-1) var(--space-2); }
+  }
+</style>

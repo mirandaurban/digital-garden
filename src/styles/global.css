@@ -1,0 +1,196 @@
+/* ==========================================================================
+   Jardín Digital — Design Tokens
+   ==========================================================================
+   Dirección: moderno y colorido, con tarjetas y acentos vivos.
+   Cada sección (Lecturas, Cuaderno, Recetario, Laboratorio, Proyectos) tiene su
+   propio color. En cualquier parte del sitio, ver ese color te dice de qué tipo 
+   de contenido se trata antes de leer una sola palabra.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---- Base (modo claro) ---- */
+  --bg: #faf9f6;
+  --bg-elevated: #ffffff;
+  --bg-sunken: #f0eee8;
+  --text: #15151b;
+  --text-muted: #63626c;
+  --border: #e6e3dc;
+  --shadow: rgba(20, 20, 26, 0.08);
+  --shadow-strong: rgba(20, 20, 26, 0.14);
+
+  /* ---- Acentos por sección (modo claro) ---- */
+  --c-lecturas: #4A6278;
+  --c-lecturas-soft: #c1d7eb;
+  --c-cuaderno: #be4962;
+  --c-cuaderno-soft: #fce1e7;
+  --c-recetario: #3D7D72;
+  --c-recetario-soft: #b6dfd8a1;
+  --c-laboratorio: #3f3c69;
+  --c-laboratorio-soft: #c2bdff94;
+  --c-proyectos: #C9A96E;
+  --c-proyectos-soft: #fde9c582;
+
+  /* ---- Tipografía ---- */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.75rem;
+  --text-4xl: 3.75rem;
+
+  /* ---- Espaciado / forma ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --max-width: 1180px;
+  --transition: 180ms ease;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #13131a;
+  --bg-elevated: #1c1c25;
+  --bg-sunken: #0e0e13;
+
+  --text: #f3f2ee;
+  --text-muted: #b1afbb;
+
+  --border: #2b2b36;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --shadow-strong: rgba(0, 0, 0, 0.6);
+
+  --c-lecturas: #8ab4e1;
+  --c-lecturas-soft: #2a3f5a;
+
+  --c-cuaderno: #f48a9f;
+  --c-cuaderno-soft: #4a2c35;
+
+  --c-recetario: #6ed9c8; 
+  --c-recetario-soft: #1f3d38;
+
+  --c-laboratorio: #a4a0ff;
+  --c-laboratorio-soft: #2c2a4a;
+
+  --c-proyectos: #e8c78f;
+  --c-proyectos-soft: #4a3d2a;
+}
+
+/* Respeta el sistema si el usuario no ha elegido manualmente (ver ThemeToggle) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #13131a;
+    --bg-elevated: #1c1c25;
+    --bg-sunken: #0e0e13;
+    --text: #f3f2ee;
+    --text-muted: #9b99a6;
+    --border: #2b2b36;
+    --shadow: rgba(0, 0, 0, 0.45);
+    --shadow-strong: rgba(0, 0, 0, 0.6);
+
+    --c-biblioteca: #8b97ff;
+    --c-biblioteca-soft: #242a52;
+    --c-cuaderno: #ff8a6c;
+    --c-cuaderno-soft: #3c2722;
+    --c-laboratorio: #4fe39a;
+    --c-laboratorio-soft: #143828;
+    --c-proyectos: #ffc94d;
+    --c-proyectos-soft: #3c2e10;
+
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--transition), color var(--transition);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+/* Foco visible accesible en cualquier elemento interactivo */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --text-4xl: 2.5rem;
+    --text-3xl: 2rem;
+    --text-2xl: 1.5rem;
+  }
+}

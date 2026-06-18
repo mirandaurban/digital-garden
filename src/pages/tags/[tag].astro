@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntryCard from '../../components/EntryCard.astro';
+import { obtenerTodasLasEntradas, slugifyTag } from '../../lib/contenido';
+
+export async function getStaticPaths() {
+  const entradas = await obtenerTodasLasEntradas();
+  const porSlug = new Map<string, { label: string; entradas: typeof entradas }>();
+
+  for (const e of entradas) {
+    for (const tag of e.data.tags) {
+      const slug = slugifyTag(tag);
+      if (!porSlug.has(slug)) porSlug.set(slug, { label: tag, entradas: [] });
+      porSlug.get(slug)!.entradas.push(e);
+    }
+  }
+
+  return Array.from(porSlug.entries()).map(([slug, info]) => ({
+    params: { tag: slug },
+    props: { label: info.label, entradas: info.entradas },
+  }));
+}
+
+const { label, entradas } = Astro.props as { label: string; entradas: any[] };
+const ordenadas = entradas.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout title={`#${label}`} description={`Todo lo etiquetado como "${label}" en el jardín.`}>
+  <section class="wrap encabezado">
+    <p class="eyebrow">Conexión</p>
+    <h1 class="encabezado__titulo">#{label}</h1>
+    <p class="encabezado__sub">{ordenadas.length} {ordenadas.length === 1 ? 'pieza' : 'piezas'} conectadas por esta idea.</p>
+  </section>
+
+  <section class="wrap grid">
+    {ordenadas.map((e) => (
+      <EntryCard
+        seccionId={e.seccionId}
+        href={`/${e.seccionId}/${e.id}`}
+        title={e.data.title}
+        description={e.data.description}
+        date={e.data.date}
+        tags={e.data.tags}
+      />
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .encabezado {
+    padding: var(--space-16) var(--space-6) var(--space-8);
+  }
+  .encabezado__titulo {
+    font-size: var(--text-3xl);
+    margin-top: var(--space-2);
+  }
+  .encabezado__sub {
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+  }
+  .grid {
+    padding-bottom: var(--space-24);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+</style>
