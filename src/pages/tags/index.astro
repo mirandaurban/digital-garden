@@ -37,7 +37,7 @@ function escala(n: number) {
     ) : (
       tags.map((t) => (
         <a href={`/tags/${t.slug}`} class="nube__tag" style={`font-size: ${escala(t.n)}rem`}>
-          #{t.label}
+          {t.label}
         </a>
       ))
     )}
