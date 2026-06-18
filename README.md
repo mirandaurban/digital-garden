@@ -14,9 +14,7 @@ Publishing is a consequence, not the goal.
 
 # Why
 
-My interests are currently scattered across notebooks, documents, bookmarks, apps, and unfinished projects.
-
-Some examples include:
+My interests are currently scattered across notebooks, documents, bookmarks, apps, and unfinished projects. Some examples include:
 
 - Books and reading notes
 - Philosophy
@@ -37,15 +35,7 @@ Instead of maintaining multiple disconnected systems, I want a single place wher
 
 ## Content First
 
-The valuable part of the project is the content:
-
-- notes
-- recipes
-- experiments
-- readings
-- projects
-
-Technology exists to make creating and exploring content easier.
+The valuable part of the project is the content. Technology exists to make creating and exploring content easier.
 
 ## Everything Can Connect
 
@@ -67,57 +57,25 @@ If Astro disappears tomorrow, the content should still exist and remain readable
 
 # Conceptual Architecture
 
-## Library
+## Lecturas
 
-Relatively finished content.
+Reading notes, reflexions, and reviews about books.
 
-Examples:
+## Cuaderno
 
-- reading notes
-- essays
-- recipes
-- references
-- guides
+Quick thoughts and unfinished ideas. Entries do not need to be complete.
 
-## Notebook
+## Recetario
 
-Quick thoughts and unfinished ideas.
+Recipes that I enjoy cooking. Useful for sharing with my family.
 
-Examples:
+## Laboratorio
 
-- questions
-- observations
-- quotes
-- reflections
-- concepts
-
-Entries do not need to be complete.
-
-## Laboratory
-
-A place for experimentation.
-
-Examples:
-
-- generative art
-- simulations
-- visualizations
-- Turing patterns
-- mathematical experiments
-- machine learning projects
-
-Built primarily out of curiosity.
+A place for experimentation. Built primarily out of curiosity.
 
 ## Projects
 
 Long-term efforts and progress logs.
-
-Examples:
-
-- triathlon training
-- swimming progression
-- digital garden development
-- technical projects
 
 ---
 
@@ -150,8 +108,6 @@ These may be added later if they solve a real problem.
 3. Related content
 4. Tags
 5. Long-term maintainability
-
-Everything else is secondary.
 
 ---
 
@@ -211,7 +167,7 @@ npm run preview
 src/
 ├── content.config.ts
 ├── content/
-│   ├── biblioteca/
+│   ├── lecturas/
 │   ├── cuaderno/
 │   ├── laboratorio/
 │   └── proyectos/
