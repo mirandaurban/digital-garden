@@ -4,7 +4,7 @@ description: "Postre frío de limón con base de galleta María."
 date: 2026-06-17
 tipo: Postre
 relacionados: []
-cover: ../images/recipes/mousse-limon.jpeg
+cover: ../../assets/recipes/mousse-limon.jpeg
 ---
 
 # Ingredientes:

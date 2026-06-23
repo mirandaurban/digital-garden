@@ -5,7 +5,7 @@ date: 2026-05-20
 tipo: Comida-Principal
 tags: ["Pasta"]
 relacionados: []
-cover: ../images/recipes/pasta-alla-vodka.jpeg
+cover: ../../assets/recipes/pasta-alla-vodka.jpeg
 ---
 
 # Ingredientes para 2 personas:

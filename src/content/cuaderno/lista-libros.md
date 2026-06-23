@@ -1,6 +1,6 @@
 ---
-title: "Lista de lectura (actualizando constantemente)"
-description: "Todos los libros que he leído, a consciencia, a lo largo de mi vida"
+title: "Lista de lectura"
+description: "Todos los libros que he leído, a consciencia, a lo largo de mi vida (actualizado constantemente)."
 date: 2026-06-18
 tipo: Nota
 tags: ["Libros"]
