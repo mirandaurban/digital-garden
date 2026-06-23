@@ -5,7 +5,7 @@ date: 2026-04-02
 tipo: Postre
 tags: ["Mango"]
 relacionados: []
-cover: ../images/recipes/mousse-de-mango.jpg
+cover: ../../assets/recipes/mousse-de-mango.jpg
 ---
 
 # Ingredientes:

@@ -5,7 +5,7 @@ date: 2026-06-06
 tipo: Panadería
 tags: ["Pan"]
 relacionados: []
-cover: ../images/recipes/pan-de-platano.JPG
+cover: ../../assets/recipes/pan-de-platano.JPG
 ---
 
 # Ingredientes:

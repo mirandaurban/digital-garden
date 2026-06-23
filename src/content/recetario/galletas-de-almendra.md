@@ -5,7 +5,7 @@ date: 2026-06-17
 tipo: Panadería
 tags: ["Galletas"]
 relacionados: []
-cover: ../images/recipes/galletas-almendra.jpeg
+cover: ../../assets/recipes/galletas-almendra.jpeg
 ---
 
 # Ingredientes:
