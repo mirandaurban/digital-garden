@@ -7,7 +7,7 @@ tipo: Libro
 rating: 3
 tags: ["Ciencia", "Espiritualidad", "Meditación"]
 relacionados: []
-cover: ../images/books/the-science-of-meditation.jpeg
+cover: ../../assets/books/the-science-of-meditation.jpeg
 ---
 
 <u>Leído en enero 2026</u> <br/><br/>

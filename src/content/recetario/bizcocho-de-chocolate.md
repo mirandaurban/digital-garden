@@ -5,7 +5,7 @@ date: 2026-06-17
 tipo: Panadería
 tags: ["Pastel"]
 relacionados: []
-cover: ../images/recipes/bizcocho-chocolate.png
+cover: ../../assets/recipes/bizcocho-chocolate.png
 ---
 
 # Ingredientes:

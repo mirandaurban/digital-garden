@@ -5,7 +5,7 @@ date: 2026-06-17
 tipo: Panadería
 tags: ["Galletas"]
 relacionados: []
-cover: ../images/recipes/galletas-mantequilla.JPG
+cover: ../../assets/recipes/galletas-mantequilla.JPG
 ---
 
 # Ingredientes:
