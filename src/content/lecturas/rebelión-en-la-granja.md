@@ -7,6 +7,7 @@ tipo: Libro
 rating: 5
 tags: ["Clásicos", "Ficción", "Filosofía", "Política"]
 relacionados: []
+cover: ../../assets/books/rebelion-en-la-granja.jpeg
 ---
 
 <u>Leído en novimebre 2024</u> <br/><br/>

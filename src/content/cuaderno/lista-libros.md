@@ -103,5 +103,6 @@ He leído bastantes libros a lo largo de mi vida, he aquí la lista de todos. En
 92. Washington Bullets Vijay Prashad
 93. All about love de Bell Hooks
 94. Adictas a la Insurgencia de Celia del Palacio
+95. El amor en los tiempos del cólera de Gabriel García Márquez
 
 Ya voy por los 100, que emoción! 🎉
