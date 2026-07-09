@@ -188,6 +188,27 @@ const s = SECCIONES[seccionId];
     padding-left: 1.3em;
   }
 
+  .entry__contenido :global(section.footnotes),
+  .entry__contenido :global(.footnotes) {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: var(--space-4) 0;
+  }
+
+  .entry__contenido :global(section.footnotes ol),
+  .entry__contenido :global(.footnotes ol) {
+    padding-left: 1.3em;
+  }
+
+  .entry__contenido :global(section.footnotes p),
+  .entry__contenido :global(.footnotes p),
+  .entry__contenido :global(section.footnotes a),
+  .entry__contenido :global(.footnotes a) {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
   .entry__contenido :global(li) { margin-bottom: var(--space-1); }
 
   .entry__contenido :global(blockquote) {
@@ -226,7 +247,8 @@ const s = SECCIONES[seccionId];
 
   .entry__contenido :global(img) {
     border-radius: var(--radius-sm);
-    margin: var(--space-4) 0;
+    margin: var(--space-4) auto;
+    display: block;
   }
 
   .entry__relacionados {
