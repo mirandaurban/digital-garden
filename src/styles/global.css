@@ -159,10 +159,41 @@ img {
   max-height: 620px;
   object-fit: cover;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(--shadow);
   display: block;
   height: auto;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+th,
+td {
+  padding: 0.8rem 0.9rem;
+  text-align: left;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+  background: var(--bg);
+  font-size: var(--text-sm);
+}
+
+thead th {
+  background: var(--bg-sunken);
+  text-transform: uppercase;
+  color: var(--text);
+  font-size: var(--text-sm);
+}
+
 
 .wrap {
   max-width: var(--max-width);
