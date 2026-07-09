@@ -40,7 +40,7 @@
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
-  --text-base: 1.0625rem;
+  --text-base: 1.1rem;
   --text-lg: 1.25rem;
   --text-xl: 1.5rem;
   --text-2xl: 2rem;
@@ -154,8 +154,14 @@ a {
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 620px;
+  max-height: 620px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   display: block;
+  height: auto;
 }
 
 .wrap {
