@@ -5,7 +5,7 @@ date: 2025-12-26
 autor: "Hermann Hesse"
 tipo: Libro
 rating: 4
-tags: ["Espiritualidad", "Ficcion"]
+tags: ["Espiritualidad", "Ficción"]
 relacionados: []
 ---
 
