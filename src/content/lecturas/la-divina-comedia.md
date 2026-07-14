@@ -7,7 +7,7 @@ tipo: Libro
 rating: 5
 tags: ["Poesía", "Clásicos", "Religión", "Ficción", "Filosofía"]
 relacionados: []
-cover: ../images/books/divina-comedia.jpeg
+cover: ../../assets/books/divina-comedia.jpeg
 ---
 
 <u>Leído en mayo 2026</u> <br/><br/>

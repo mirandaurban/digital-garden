@@ -5,7 +5,7 @@ date: 2026-06-17
 tipo: Postre
 tags: []
 relacionados: []
-cover: ../images/recipes/natilla-vainilla.jpeg
+cover: ../../assets/recipes/natilla-vainilla.jpeg
 ---
 
 # Ingredientes:

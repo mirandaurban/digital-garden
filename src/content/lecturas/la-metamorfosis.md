@@ -7,7 +7,7 @@ tipo: Libro
 rating: 5
 tags: ["Filosofía", "Clásicos", "Ficción", "Existencialismo"]
 relacionados: []
-cover: ../images/books/la-metamorfosis.jpeg
+cover: ../../assets/books/la-metamorfosis.jpeg
 ---
 
 <u>Leído en noviembre 2024</u> <br/><br/>

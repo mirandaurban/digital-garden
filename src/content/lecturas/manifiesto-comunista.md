@@ -7,7 +7,7 @@ tipo: Libro
 rating: 5
 tags: ["Filosofía", "Política", "Clásicos", "Comunismo"]
 relacionados: []
-cover: ../images/books/manifiesto-comunista.jpeg
+cover: ../../assets/books/manifiesto-comunista.jpeg
 ---
 
 <u>Leído en mayo 2026</u> <br/><br/>
