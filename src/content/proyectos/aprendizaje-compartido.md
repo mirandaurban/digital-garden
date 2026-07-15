@@ -34,9 +34,9 @@ Dependiendo de la persona y de lo que quiera saber de ella, planeo preguntar una
 
 No hay una regla. La lista puede incluir familiares, amigos, profesores, investigadores, escritores, artistas, deportistas, personas con las que he trabajado o incluso alguien que solo conozco por su trabajo. Usaré una tabla como esta para poder mapear la lista de personas:
 
-| Nombre | Categoría | ¿Por qué lo admiro? | ¿Tengo contacto? | Prioridad |
-| ------ | --------- | ------------------- | ---------------- | --------- |
-|        |           |                     |                  |           |
+| Nombre       | Categoría | ¿Por qué lo admiro?                                          | ¿Tengo contacto? | Prioridad |
+| ------------ | --------- | ------------------------------------------------------------ | ---------------- | --------- |
+| Taylor Swift | Artista   | La forma de conectar con su audiencia a través de sus letras es increíble | No               | 1         |
 
 ### Objetivo
 
