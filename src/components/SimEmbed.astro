@@ -1,0 +1,27 @@
+---
+// src/components/SimEmbed.astro
+const { sim, labOrigin = "http://127.0.0.1:5500/lab/algoritmos-patrones-naturaleza/voronoi/index.html" } = Astro.props;
+---
+<div class="sim-wrapper">
+  <iframe id={`sim-${sim}`} src={`${labOrigin}/${sim}/embed.html`} width="100%" height="500"></iframe>
+  <input type="range" class="points-slider" min="10" max="200" value="50" />
+</div>
+
+<script>
+  import { createSimBridge } from "../shared/bridge.js";
+
+  // Astro ejecuta este script en el cliente, una vez por cada instancia del componente
+  document.querySelectorAll(".sim-wrapper").forEach((wrapper) => {
+    const iframe = wrapper.querySelector("iframe");
+    const slider = wrapper.querySelector(".points-slider");
+    const bridge = createSimBridge(iframe, "http://127.0.0.1:5500/lab/algoritmos-patrones-naturaleza/voronoi/index.html");
+
+    slider.addEventListener("input", (e) => {
+      bridge.send({ type: "SET_PARAMS", points: Number(e.target.value) });
+    });
+
+    bridge.onMessage("STATS", (data) => {
+      console.log("entropía:", data.entropy);
+    });
+  });
+</script>
