@@ -1,6 +1,6 @@
 ---
 title: "La tregua"
-description: ""
+description: "Necesitamos conocer realmente a alguien para comenzar a verlo como lo que es: un ser humano, igual que nosotros, igual de frágil y vulnerable."
 date: 2026-08-29
 autor: "Mario Benedetti"
 tipo: Libro
