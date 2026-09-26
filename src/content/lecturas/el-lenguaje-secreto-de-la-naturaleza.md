@@ -1,6 +1,6 @@
 ---
 title: "El lenguaje secreto de la naturaleza"
-description: ""
+description: "Me enseñó a prestarle más atención a la naturalezay a maravillarme con su historia y su función"
 date: 2026-08-31
 autor: "Oscar S. Aranda"
 tipo: Libro
@@ -26,7 +26,7 @@ Por otro lado, el libro me recordó una idea que ya había visto alguna vez: ¿q
 
 A partir de esta lectura, cada vez que me encuentro con uno ya no puedo evitar pensar que, al final, existía mucho antes de que yo llegara y simplemente está intentando sobrevivir en un mundo que nosotros hemos modificado para hacer espacio para nosotros. En general, creo que el libro me ayudó a comprender el mundo animal desde otro lugar. Entender por qué existen, qué hacen y qué necesitan hace que sea mucho más fácil tenerles compasión. Incluso hace poco tuve un insecto en la cara y mi reacción fue mucho más tranquila, en lugar de intentar deshacerme de él desde el primer momento.
 
-Creo que eso es lo que más me llevo del libro: no me enseñó a amar la naturaleza, porque eso ya estaba ahí. Me enseñó a prestarle más atención y a maravillarme con su historia y su función. Después de leerlo, siento que puedo disfrutar mejor de la naturaleza porque ya no necesito que sea bonita para encontrarla fascinante.
+Creo que eso es lo que más me llevo del libro: me enseñó a prestarle más atención a la naturaleza y a maravillarme con su historia y su función. Después de leerlo, siento que puedo disfrutar mejor de la naturaleza porque ya no necesito que sea bonita para encontrarla fascinante.
 
 ### ¿Para quién recomiendo este libro?
 
