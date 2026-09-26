@@ -5,7 +5,7 @@ date: 2026-08-29
 autor: "Mario Benedetti"
 tipo: Libro
 rating: 5
-tags: ["Ficción", "Latinoamerica", "Amor", "Clásicos", "Existencialismo"]
+tags: ["Ficción", "Latinoamérica", "Amor", "Clásicos", "Existencialismo"]
 relacionados: []
 cover: ../../assets/books/la-tregua.jpg
 

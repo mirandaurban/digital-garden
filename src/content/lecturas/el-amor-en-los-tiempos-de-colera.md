@@ -5,7 +5,7 @@ date: 2026-06-29
 autor: "Gabriel García Márquez"
 tipo: Libro
 rating: 4
-tags: ["Ficción", "Amor", "Latinoamerica"]
+tags: ["Ficción", "Amor", "Latinoamérica"]
 relacionados: []
 cover: ../../assets/books/el-amor-en-los-tiempos-de-colera.jpeg
 ---
