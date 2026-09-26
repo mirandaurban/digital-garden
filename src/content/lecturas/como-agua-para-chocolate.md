@@ -7,16 +7,14 @@ tipo: Libro
 rating: 4
 tags: ["Amor", "Ficción", "Latinoamérica"]
 relacionados: []
-cover: ../../assets/books/como-agua-para-chocolate.jpeg
-
-
+cover: ../../assets/books/como-agua-para-chocolate.jpg
 ---
 
 <u>Leído en septiembre 2026</u> <br/><br/>
 
-*Como agua para chocolate* es otra de las lecturas que elegí para que me acompañaran en este mes patrio y considero que fue una gran elección. Su riqueza culinaria, combinada con la trama, crea el ambiente perfecto para atraparte por completo. Una lectura ideal para el puente de Independencia y, por supuesto, una súper recomendación para aprovechar ese respiro.
+_Como agua para chocolate_ es otra de las lecturas que elegí para que me acompañaran en este mes patrio y considero que fue una gran elección. Su riqueza culinaria, combinada con la trama, crea el ambiente perfecto para atraparte por completo. Una lectura ideal para el puente de Independencia y, por supuesto, una súper recomendación para aprovechar ese respiro.
 
-Ya adentrados en la lectura, me encanta cómo toma uno de los elementos más importantes de la cultura mexicana, la comida, y construye toda una historia alrededor de ella, justo como ocurre en la vida real. ¿Cuántos de nosotros no evocamos recuerdos específicos al volver a probar ese platillo típico de la abuela o ese pan por el que esperamos todo el año? Un deleite para la pancita y para el cerebro, pues incorpora dos de mis grandes placeres: la comida y la literatura. 
+Ya adentrados en la lectura, me encanta cómo toma uno de los elementos más importantes de la cultura mexicana, la comida, y construye toda una historia alrededor de ella, justo como ocurre en la vida real. ¿Cuántos de nosotros no evocamos recuerdos específicos al volver a probar ese platillo típico de la abuela o ese pan por el que esperamos todo el año? Un deleite para la pancita y para el cerebro, pues incorpora dos de mis grandes placeres: la comida y la literatura.
 
 Además, el uso de realismo mágico le da todavía más riqueza a la historia porque, por lo menos en mi experiencia, hace que las emociones de los personajes se sientan más vivas. No sé como explicarlo exactamente, pero este recurso despierta mi imaginación de una manera muy particular: convierte emociones y experiencias en algo casi tangible. Es una estimulación que podría comparar únicamente con la sensación que provocan ciertos primeros descubrimientos: los primeros deleites culinarios —sí, también veo el chiste en eso jajaja—, el amor, y todas esas experiencias que parecen demasiado grandes para quedarse solamente dentro de nosotros.
 
